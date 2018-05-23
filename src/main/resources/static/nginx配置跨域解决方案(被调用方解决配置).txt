@@ -1,0 +1,33 @@
+
+    在hosts里映射一个本地域名，做于虚拟主机（多个域名映射同一台服务器，这台服务器就是虚拟主机）访问地址。
+    127.0.01  b.com
+
+
+    next 在nginx的文件conf中创建一个文件夹vhost(存放虚拟主机的配置文件)，然后在nginx.conf最后一行添加如下配置
+    include vhost/*.conf;
+
+    接下来的就是在conf里的具体配置内容了
+    vhost下的b.conf里如下这样配置
+    server{
+    	listen 80;
+
+    	server_name b.com;
+
+    	location/{
+    	proxy_pass http://localhost:8080/;
+
+    	add_header Access-Control-Allow-Method *;
+    	add_header Access-Control-Max-Age 3600;
+    	add_header Access-Control-Allow-Credentials true;
+
+    	add_header Access-Control-Allow-Origin $http_origin;
+    	add_header Access-Control-Allow-Headers
+    	$http_access_control_request_headers;
+
+    	if ($request_method = OPTIONS){         //if 后要带空格，否则会报错
+    			return 200;
+    		}
+    	}
+    }
+
+
