@@ -34,6 +34,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+            <!--将依赖标记为optional可选是一种最佳做法，可以防止将devtools依赖传递到其他模块中。-->
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
