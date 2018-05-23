@@ -10,13 +10,13 @@
     </appender>
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--保存除了error级别的日志-->
+        <!--保存除了error级别的日志 相当于排除法-->
      <!--   <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
+            <level>ERROR</level>
             <onMatch>DENY</onMatch>
             <onMismatch>ACCEPT</onMismatch>
         </filter>-->
-        <!--只保存level等级的日志  threshold 临界值-->
+        <!--只保存level等级的日志  threshold 临界值 选择的是谁就保留那种级别的-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
