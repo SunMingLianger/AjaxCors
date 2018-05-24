@@ -3,6 +3,7 @@ package com.sml.ajaxserver.controller;
 import com.sml.ajaxserver.pojo.ResultBean;
 import com.sml.ajaxserver.pojo.User;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by 神迷的亮
