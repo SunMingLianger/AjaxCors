@@ -2,8 +2,11 @@ package com.sml.ajaxserver.controller;
 
 import com.sml.ajaxserver.pojo.ResultBean;
 import com.sml.ajaxserver.pojo.User;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * Created by 神迷的亮
@@ -46,4 +49,18 @@ public class TestController
         return new ResultBean("getheader" + header1 + "  " + header2);
     }
 
+    public static void main(String[] args)
+    {
+        //MD5加密。使用spring core 提供的工具类
+        String s = DigestUtils.md5DigestAsHex("邹地".getBytes());
+
+        //base64加密
+        String s1 = Base64.getEncoder().encodeToString("孙明亮".getBytes(StandardCharsets.UTF_8));
+        System.out.println(s1);
+
+        String s2 = new String(Base64.getDecoder().decode(s1.getBytes()), StandardCharsets.UTF_8);
+
+        System.out.println(s2);
+
+    }
 }
